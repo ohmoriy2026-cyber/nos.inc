@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ — NOS | 株式会社NOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0f0f0f;--ink2:#1c1c1c;--mist:#f8f7f4;--mist2:#eeece8;--fog:#d4cfc6;--gold:#b8965a;--white:#fff;--mid:#7a7570;--lmid:#a8a49e}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--mist);color:var(--ink);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.4}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,247,244,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(15,15,15,.07)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.6rem;letter-spacing:.25em;color:var(--ink);text-decoration:none;text-transform:uppercase}
+.logo em{font-style:normal;color:var(--gold)}
+nav{display:flex;gap:2.5rem;align-items:center}
+nav a{font-size:.75rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s ease}
+nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after{width:100%}
+.nav-cta{border:1px solid var(--ink);padding:.5rem 1.4rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--ink);color:var(--mist)}.nav-cta::after{display:none!important}
+
+/* PAGE HERO */
+.page-hero{padding:140px 60px 100px;background:var(--ink);position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px}
+.ph-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(184,150,90,.1) 0%,transparent 55%)}
+.ph-l{position:relative;z-index:2;animation:fu .9s ease both}
+.ph-r{position:relative;z-index:2;animation:fu .9s .2s ease both}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.1;color:var(--white);margin-bottom:1.5rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:.88rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.45);max-width:460px}
+.bc{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;display:flex;gap:.8rem;color:rgba(255,255,255,.25);margin-bottom:2rem}
+.bc a{color:rgba(255,255,255,.25);text-decoration:none;transition:color .3s}.bc a:hover{color:rgba(255,255,255,.6)}
+.contact-meta{display:flex;flex-direction:column;gap:1.5rem}
+.cm-item{}
+.cm-lbl{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.cm-val{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.6}
+.cm-val a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s}
+.cm-val a:hover{color:var(--gold)}
+
+/* MAIN CONTACT */
+.contact-wrap{padding:80px 60px 120px;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;max-width:1200px;margin:0 auto;align-items:start}
+
+/* LEFT INFO */
+.contact-info{}
+.ci-section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--fog)}
+.ci-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ci-lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.ci-h{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:.8rem;line-height:1.3}
+.ci-h em{font-style:italic;color:var(--gold)}
+.ci-body p{font-size:.85rem;font-weight:300;color:var(--mid);line-height:1.8;margin-bottom:.5rem}
+.ci-detail-row{padding:.8rem 0;border-bottom:1px solid var(--fog);display:flex;gap:1.5rem;align-items:flex-start}
+.ci-detail-row:first-child{border-top:1px solid var(--fog)}
+.ci-key{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);width:60px;flex-shrink:0;padding-top:.15rem}
+.ci-val{font-size:.85rem;font-weight:300;color:var(--ink);line-height:1.6}
+.ci-val a{color:var(--ink);text-decoration:none;transition:color .3s}
+.ci-val a:hover{color:var(--gold)}
+
+/* FORM */
+.contact-form{background:var(--white);border:1px solid var(--fog);padding:3rem}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--ink);margin-bottom:.5rem}
+.form-title em{font-style:italic;color:var(--gold)}
+.form-subtitle{font-size:.82rem;font-weight:300;color:var(--lmid);margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--fog)}
+.form-group{margin-bottom:1.8rem}
+.form-group label{display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem}
+.form-group label .req{color:var(--gold);margin-left:.3rem}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:.8rem 1rem;
+  background:var(--mist);border:1px solid var(--fog);
+  font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:300;
+  color:var(--ink);outline:none;
+  transition:border-color .3s,background .3s;
+  appearance:none;-webkit-appearance:none;
+}
+.form-group input:focus,.form-group select,.form-group textarea:focus{border-color:var(--gold);background:var(--white)}
+.form-group textarea{resize:vertical;min-height:140px;line-height:1.7}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a8a49e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;cursor:pointer}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-check{display:flex;gap:.8rem;align-items:flex-start;margin-top:1.5rem}
+.form-check input[type="checkbox"]{width:16px;height:16px;flex-shrink:0;margin-top:.15rem;accent-color:var(--gold);cursor:pointer}
+.form-check label{font-size:.8rem;font-weight:300;color:var(--mid);line-height:1.6;cursor:pointer}
+.form-check label a{color:var(--gold);text-decoration:none}
+.form-submit{width:100%;margin-top:2rem;padding:1.1rem;background:var(--ink);color:var(--mist);border:1px solid var(--ink);font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.form-submit:hover{background:transparent;color:var(--ink)}
+.form-note{font-size:.75rem;font-weight:300;color:var(--lmid);text-align:center;margin-top:1rem;line-height:1.6}
+
+/* SUCCESS STATE */
+.form-success{display:none;text-align:center;padding:3rem 2rem}
+.form-success.show{display:block}
+.success-icon{font-size:2.5rem;margin-bottom:1.5rem}
+.success-h{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ink);margin-bottom:1rem}
+.success-h em{font-style:italic;color:var(--gold)}
+.success-p{font-size:.85rem;font-weight:300;color:var(--mid);line-height:1.8}
+
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.04);padding:60px 60px 40px}
+.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.04)}
+.fb p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.28);line-height:1.8;max-width:240px;margin-top:1rem}
+.fc h4{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.fc ul{list-style:none}.fc li{margin-bottom:.6rem}
+.fc li a{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.32);text-decoration:none;transition:color .3s}
+.fc li a:hover{color:rgba(255,255,255,.8)}
+.fbot{display:flex;justify-content:space-between;align-items:center}
+.fbot p,.fbot a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.18);text-decoration:none;transition:color .3s}
+.fbot a:hover{color:rgba(255,255,255,.5)}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){
+  header{padding:0 24px}nav{display:none}
+  .page-hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
+  .contact-wrap{grid-template-columns:1fr;padding:60px 24px 80px;gap:50px}
+  .form-row{grid-template-columns:1fr}
+  .contact-form{padding:2rem}
+  footer{padding:40px 24px 24px}.ft{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<header>
+  <a href="index.html" class="logo">N<em>O</em>S</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">会社概要</a>
+    <a href="service.html">事業紹介</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="contact.html" class="active nav-cta">Contact</a>
+  </nav>
+</header>
+<main>
+<div class="page-hero">
+  <div class="ph-grid"></div><div class="ph-glow"></div>
+  <div class="ph-l">
+    <div class="eyebrow">Contact</div>
+    <h1>お問い<br><em>合わせ</em></h1>
+    <p class="hero-desc">製品のご相談・お見積もり依頼から、既存機器のトラブル対応まで、お気軽にご連絡ください。専門スタッフが丁寧にご対応します。</p>
+  </div>
+  <div class="ph-r">
+    <div class="bc"><a href="index.html">Home</a><span>/</span><span>お問い合わせ</span></div>
+    <div class="contact-meta">
+      <div class="cm-item">
+        <div class="cm-lbl">Tel</div>
+        <div class="cm-val"><a href="tel:03-0000-0000">03-0000-0000</a></div>
+      </div>
+      <div class="cm-item">
+        <div class="cm-lbl">Email</div>
+        <div class="cm-val"><a href="mailto:info@nos-corp.co.jp">info@nos-corp.co.jp</a></div>
+      </div>
+      <div class="cm-item">
+        <div class="cm-lbl">Hours</div>
+        <div class="cm-val">平日 9:00 — 18:00<br>（土日祝日は休業）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-wrap">
+  <!-- LEFT: INFO -->
+  <div class="contact-info">
+    <div class="ci-section">
+      <div class="ci-lbl">お電話でのご相談</div>
+      <h2 class="ci-h">お急ぎの方は<br><em>お電話で</em></h2>
+      <div class="ci-body">
+        <div class="ci-detail-row"><span class="ci-key">Tel</span><span class="ci-val"><a href="tel:03-0000-0000">03-0000-0000</a></span></div>
+        <div class="ci-detail-row"><span class="ci-key">Fax</span><span class="ci-val">03-0000-0001</span></div>
+        <div class="ci-detail-row"><span class="ci-key">Hours</span><span class="ci-val">平日 9:00 — 18:00<br>（土日祝日・年末年始は休業）</span></div>
+      </div>
+    </div>
+    <div class="ci-section">
+      <div class="ci-lbl">こんなお問い合わせが多いです</div>
+      <h2 class="ci-h">よくある<br><em>ご相談内容</em></h2>
+      <div class="ci-body">
+        <p>・複合機・プリンターの機種選定・見積依頼</p>
+        <p>・リース満了に伴う機種更新の相談</p>
+        <p>・ネットワーク構築・Wi-Fi整備のご相談</p>
+        <p>・PC一括導入・キッティング依頼</p>
+        <p>・機器の故障・不具合に関する緊急対応</p>
+        <p>・現状機器のコスト見直し・診断</p>
+      </div>
+    </div>
+    <div class="ci-section">
+      <div class="ci-lbl">所在地</div>
+      <h2 class="ci-h">会社<em>所在地</em></h2>
+      <div class="ci-body">
+        <div class="ci-detail-row"><span class="ci-key">郵便</span><span class="ci-val">〒000-0000</span></div>
+        <div class="ci-detail-row"><span class="ci-key">住所</span><span class="ci-val">東京都○○区○○1-2-3<br>○○ビル 5F</span></div>
+        <div class="ci-detail-row"><span class="ci-key">最寄</span><span class="ci-val">○○線「○○駅」徒歩5分</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div>
+    <div class="contact-form" id="formWrap">
+      <div id="formBody">
+        <h2 class="form-title">メールで<em>お問い合わせ</em></h2>
+        <p class="form-subtitle">通常1〜2営業日以内にご返信いたします。お急ぎの場合はお電話ください。</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>会社名<span class="req">*</span></label>
+            <input type="text" id="company" placeholder="株式会社 ○○">
+          </div>
+          <div class="form-group">
+            <label>部署名</label>
+            <input type="text" id="dept" placeholder="総務部">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前<span class="req">*</span></label>
+            <input type="text" id="name" placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label>電話番号</label>
+            <input type="tel" id="tel" placeholder="03-0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス<span class="req">*</span></label>
+          <input type="email" id="email" placeholder="info@example.co.jp">
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ種別<span class="req">*</span></label>
+          <select id="category">
+            <option value="">選択してください</option>
+            <option>複合機・プリンターの相談</option>
+            <option>PC・タブレットの相談</option>
+            <option>ネットワーク構築の相談</option>
+            <option>セキュリティ機器の相談</option>
+            <option>保守・メンテナンスの相談</option>
+            <option>コスト見直し・診断依頼</option>
+            <option>故障・トラブル対応</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ内容<span class="req">*</span></label>
+          <textarea id="message" placeholder="ご相談内容・ご要望をご記入ください。現在ご使用中の機器情報や台数などがあれば、あわせてお知らせいただくとスムーズです。"></textarea>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="privacy">
+          <label for="privacy"><a href="privacy.html">プライバシーポリシー</a>に同意の上、送信します。</label>
+        </div>
+        <button class="form-submit" onclick="submitForm()">送信する</button>
+        <p class="form-note">※ 送信後、確認メールをお送りします。<br>迷惑メールフォルダもご確認ください。</p>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✉️</div>
+        <h2 class="success-h">送信<em>完了</em></h2>
+        <p class="success-p">お問い合わせありがとうございます。<br>通常1〜2営業日以内にご返信いたします。<br><br>お急ぎの場合は、お電話（03-0000-0000）にてお問い合わせください。</p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="ft">
+    <div class="fb"><a href="index.html" class="logo">N<em>O</em>S</a><p>株式会社NOS<br>OA機器の販売・設置・保守まで<br>トータルサポートする専門会社です。</p></div>
+    <div class="fc"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">会社概要</a></li><li><a href="service.html">事業紹介</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><ul><li><a href="tel:03-0000-0000">03-0000-0000</a></li><li><a href="mailto:info@nos-corp.co.jp">info@nos-corp.co.jp</a></li><li><a>平日 9:00 — 18:00</a></li></ul></div>
+    <div class="fc"><h4>Address</h4><ul><li><a>〒000-0000</a></li><li><a>東京都○○区○○1-2-3</a></li><li><a>○○ビル 5F</a></li></ul></div>
+  </div>
+  <div class="fbot"><p>© 2025 NOS Corporation. All Rights Reserved.</p><a href="privacy.html">Privacy Policy</a></div>
+</footer>
+<script>
+const c=document.getElementById('cursor'),r=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';setTimeout(()=>{r.style.left=e.clientX+'px';r.style.top=e.clientY+'px'},60)});
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{r.style.transform='translate(-50%,-50%) scale(1.8)';r.style.opacity='.7';r.style.borderColor='var(--gold)'});el.addEventListener('mouseleave',()=>{r.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.4';r.style.borderColor='var(--ink)'})});
+function submitForm(){
+  const req = ['company','name','email','category','message'];
+  for(const id of req){
+    const el = document.getElementById(id);
+    if(!el.value.trim()){
+      el.style.borderColor='#c0392b';
+      el.focus();
+      return;
+    }
+  }
+  if(!document.getElementById('privacy').checked){
+    alert('プライバシーポリシーへの同意をお願いします。');
+    return;
+  }
+  document.getElementById('formBody').style.display='none';
+  document.getElementById('formSuccess').classList.add('show');
+  window.scrollTo({top:document.getElementById('formWrap').offsetTop - 100, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOS — Network Office Solutions | 株式会社NOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6b;
+    --accent: #e8a020;
+    --accent2: #2a7fff;
+    --light: #f4f6fa;
+    --white: #ffffff;
+    --gray: #8a9ab5;
+    --text: #1e2d45;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10, 22, 40, 0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(232, 160, 32, 0.3);
+    padding: 0 5%; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 2rem; align-items: center; }
+  nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; transition: color 0.3s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+  nav a:hover { color: var(--accent); }
+  nav a:hover::after { width: 100%; }
+  .nav-cta { background: var(--accent); color: var(--navy) !important; padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 700 !important; }
+  .nav-cta:hover { background: #f5b840 !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; position: relative; overflow: hidden; padding: 70px 5% 0; }
+  .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 70% 50%, rgba(42,127,255,0.15) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(232,160,32,0.1) 0%, transparent 50%); }
+  .hero-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-inner { position: relative; z-index: 2; display: flex; align-items: center; width: 100%; gap: 4rem; }
+  .hero-content { max-width: 680px; animation: fadeUp 1s ease forwards; }
+  .hero-badge { display: inline-block; background: rgba(232,160,32,0.15); border: 1px solid rgba(232,160,32,0.4); color: var(--accent); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; padding: 0.4rem 1rem; border-radius: 30px; margin-bottom: 2rem; }
+  .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; }
+  .hero h1 .highlight { color: var(--accent); display: block; }
+  .hero p { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: var(--navy); padding: 0.9rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; display: inline-block; }
+  .btn-primary:hover { background: #f5b840; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,160,32,0.4); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 0.9rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.3s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .hero-stats { margin-left: auto; display: flex; flex-direction: column; gap: 1.5rem; animation: fadeUp 1s 0.3s ease both; }
+  .stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; min-width: 160px; backdrop-filter: blur(10px); }
+  .stat-num { font-family: 'Bebas Neue', cursive; font-size: 3rem; color: var(--accent); line-height: 1; letter-spacing: 0.05em; }
+  .stat-label { color: rgba(255,255,255,0.6); font-size: 0.78rem; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { color: var(--gray); font-size: 0.93rem; line-height: 1.8; max-width: 500px; }
+
+  /* FEATURES */
+  .features { background: var(--light); }
+  .features-header { text-align: center; margin-bottom: 3.5rem; }
+  .features-header .section-sub { margin: 0 auto; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .feature-card { background: var(--white); border-radius: 12px; padding: 2rem; border: 1px solid rgba(0,0,0,0.06); transition: all 0.3s; position: relative; overflow: hidden; }
+  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); transform: scaleY(0); transition: transform 0.3s; transform-origin: bottom; }
+  .feature-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .feature-card:hover::before { transform: scaleY(1); }
+  .feature-icon { width: 52px; height: 52px; background: rgba(232,160,32,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 1.5rem; }
+  .feature-card h3 { font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; font-size: 1rem; }
+  .feature-card p { color: var(--gray); font-size: 0.87rem; line-height: 1.7; }
+
+  /* PRODUCTS */
+  .products-section { background: var(--white); }
+  .products-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
+  .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .product-card { background: var(--light); border-radius: 10px; padding: 1.5rem; border: 2px solid transparent; transition: all 0.3s; }
+  .product-card:hover { border-color: var(--accent); background: rgba(232,160,32,0.04); }
+  .product-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .product-card h4 { font-weight: 700; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .product-card p { color: var(--gray); font-size: 0.8rem; line-height: 1.6; }
+
+  /* NEWS */
+  .news-section { background: var(--navy); color: var(--white); }
+  .news-section .section-title { color: var(--white); }
+  .news-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
+  .news-list { display: flex; flex-direction: column; }
+  .news-item { padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; gap: 1.5rem; align-items: flex-start; text-decoration: none; color: inherit; }
+  .news-item:hover .news-title { color: var(--accent); }
+  .news-date { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; color: var(--accent); white-space: nowrap; font-weight: 600; padding-top: 0.1rem; }
+  .news-cat { font-size: 0.7rem; background: rgba(232,160,32,0.15); color: var(--accent); border: 1px solid rgba(232,160,32,0.3); padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap; height: fit-content; }
+  .news-title { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.6; transition: color 0.3s; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, var(--accent) 0%, #f5b840 100%); text-align: center; padding: 80px 5%; }
+  .cta-section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+  .cta-section p { color: rgba(10,22,40,0.7); margin-bottom: 2rem; font-size: 1rem; }
+  .btn-dark { background: var(--navy); color: var(--white); padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; display: inline-block; }
+  .btn-dark:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(10,22,40,0.3); }
+
+  /* FOOTER */
+  footer { background: #060e1a; color: rgba(255,255,255,0.6); padding: 3rem 5% 1.5rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-top: 0.8rem; max-width: 280px; }
+  .footer-nav h4 { color: var(--white); font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; }
+  .footer-nav ul { list-style: none; }
+  .footer-nav ul li { margin-bottom: 0.5rem; }
+  .footer-nav ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; transition: color 0.3s; }
+  .footer-nav ul li a:hover { color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; text-align: center; font-size: 0.78rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .hero-inner { flex-direction: column; }
+    .hero-stats { flex-direction: row; flex-wrap: wrap; margin: 0; }
+    .stat-card { min-width: 120px; padding: 1rem; }
+    .products-layout, .news-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">TechOffice<span>.</span></a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="about.html">会社概要</a>
+    <a href="service.html">事業紹介</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="contact.html" class="nav-cta">お問い合わせ</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">OA EQUIPMENT SPECIALIST</div>
+      <h1>オフィスの効率化を、<span class="highlight">最適な機器で。</span></h1>
+      <p>複合機・PCからネットワーク機器まで、<br>貴社のオフィス環境に合わせた最適なOA機器を<br>提案・販売・アフターサポートまで一貫対応します。</p>
+      <div class="hero-btns">
+        <a href="service.html" class="btn-primary">事業内容を見る</a>
+        <a href="contact.html" class="btn-outline">無料相談はこちら</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-num">500<span style="font-size:1.5rem">+</span></div><div class="stat-label">導入実績（社）</div></div>
+      <div class="stat-card"><div class="stat-num">15</div><div class="stat-label">年の実績</div></div>
+      <div class="stat-card"><div class="stat-num">98<span style="font-size:1.5rem">%</span></div><div class="stat-label">顧客満足度</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-header">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">選ばれる4つの理由</h2>
+    <p class="section-sub">創業以来、中小企業から大手法人まで幅広くご支援。お客様のビジネスを止めない体制を整えています。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">🔍</div><h3>最適機器のご提案</h3><p>業種・規模・予算に合わせて国内外主要メーカーの中から最適な機器をご提案します。</p></div>
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>スピード納品対応</h3><p>在庫を多数保有しており、ご注文から最短翌営業日での納品が可能です。</p></div>
+    <div class="feature-card"><div class="feature-icon">🛠️</div><h3>充実のアフターサポート</h3><p>専任の技術スタッフが導入後の設置・設定・保守・修理まで一括サポートします。</p></div>
+    <div class="feature-card"><div class="feature-icon">💰</div><h3>コスト削減のご支援</h3><p>現状のコスト診断から最適なリース・購入プランをご提案し、経費削減を実現します。</p></div>
+  </div>
+</section>
+
+<section class="products-section">
+  <div class="products-layout">
+    <div>
+      <div class="section-label">Products</div>
+      <h2 class="section-title">取扱製品</h2>
+      <p class="section-sub" style="margin-bottom:2rem">主要メーカーの正規代理店として、幅広い製品ラインナップを取り揃えています。</p>
+      <a href="service.html" class="btn-primary" style="font-size:0.9rem">すべての製品を見る</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card"><div class="icon">🖨️</div><h4>複合機・プリンター</h4><p>コピー・スキャン・FAXを一台に。省スペースから高速機まで。</p></div>
+      <div class="product-card"><div class="icon">💻</div><h4>パソコン・タブレット</h4><p>法人向けビジネスモデルを中心に、用途に応じた端末をご提案。</p></div>
+      <div class="product-card"><div class="icon">🌐</div><h4>ネットワーク機器</h4><p>ルーター・スイッチ・Wi-Fiアクセスポイントの設計から構築まで。</p></div>
+      <div class="product-card"><div class="icon">📠</div><h4>FAX・電話機器</h4><p>ビジネスフォン・IP電話・FAXなど通信環境をトータルサポート。</p></div>
+      <div class="product-card"><div class="icon">🔒</div><h4>セキュリティ機器</h4><p>UTM・監視カメラ・入退室管理システムで安心のオフィスを実現。</p></div>
+      <div class="product-card"><div class="icon">🖥️</div><h4>ディスプレイ・周辺機器</h4><p>大型モニター・プロジェクター・会議システムも豊富に対応。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="news-section">
+  <div class="news-layout">
+    <div>
+      <div class="section-label">News</div>
+      <h2 class="section-title">最新情報</h2>
+      <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;line-height:1.8;margin-top:1rem;">新製品情報やキャンペーン、会社からのお知らせを随時更新しています。</p>
+    </div>
+    <div class="news-list">
+      <a href="#" class="news-item"><span class="news-date">2025.06.10</span><span class="news-cat">お知らせ</span><span class="news-title">夏季一斉点検キャンペーン（7月〜8月）のご案内</span></a>
+      <a href="#" class="news-item"><span class="news-date">2025.05.20</span><span class="news-cat">新製品</span><span class="news-title">複合機新モデル「XX-8000シリーズ」取り扱い開始のお知らせ</span></a>
+      <a href="#" class="news-item"><span class="news-date">2025.04.01</span><span class="news-cat">お知らせ</span><span class="news-title">2025年度 会社概要・サービス案内を更新しました</span></a>
+      <a href="#" class="news-item"><span class="news-date">2025.03.15</span><span class="news-cat">キャンペーン</span><span class="news-title">法人向け決算特別価格キャンペーン実施中（〜3月末）</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>まずは無料相談から始めましょう</h2>
+  <p>現状の機器構成の見直しから新規導入まで、専門スタッフが丁寧にご対応します。</p>
+  <a href="contact.html" class="btn-dark">お問い合わせ・無料相談はこちら →</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">TechOffice<span>.</span></a>
+        <p>OA機器の販売・設置・保守まで<br>トータルサポートする専門会社です。<br>〒000-0000 東京都○○区○○1-2-3</p>
+      </div>
+      <div class="footer-nav">
+        <h4>メニュー</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="about.html">会社概要</a></li>
+          <li><a href="service.html">事業紹介</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="tel:03-0000-0000">📞 03-0000-0000</a></li>
+          <li><a href="mailto:info@techoffice.co.jp">✉ info@techoffice.co.jp</a></li>
+          <li><a>営業時間：平日 9:00〜18:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TechOffice Solutions Co., Ltd. All Rights Reserved. ｜ <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">プライバシーポリシー</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

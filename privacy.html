@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー — NOS | 株式会社NOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0f0f0f;--ink2:#1c1c1c;--mist:#f8f7f4;--mist2:#eeece8;--fog:#d4cfc6;--gold:#b8965a;--white:#fff;--mid:#7a7570;--lmid:#a8a49e}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--mist);color:var(--ink);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.4}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,247,244,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(15,15,15,.07)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.6rem;letter-spacing:.25em;color:var(--ink);text-decoration:none;text-transform:uppercase}
+.logo em{font-style:normal;color:var(--gold)}
+nav{display:flex;gap:2.5rem;align-items:center}
+nav a{font-size:.75rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s ease}
+nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after{width:100%}
+.nav-cta{border:1px solid var(--ink);padding:.5rem 1.4rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--ink);color:var(--mist)}.nav-cta::after{display:none!important}
+
+/* PAGE HERO — minimal for legal page */
+.page-hero{padding:140px 60px 80px;background:var(--ink);position:relative;overflow:hidden}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:80px 80px}
+.ph-inner{position:relative;z-index:2;max-width:760px;animation:fu .9s ease both}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;color:var(--white);margin-bottom:1.5rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.bc{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;display:flex;gap:.8rem;color:rgba(255,255,255,.25);margin-top:2rem}
+.bc a{color:rgba(255,255,255,.25);text-decoration:none;transition:color .3s}.bc a:hover{color:rgba(255,255,255,.6)}
+
+/* CONTENT */
+.content-wrap{padding:80px 60px 120px;max-width:900px;margin:0 auto}
+.content-date{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;color:var(--lmid);margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--fog)}
+.policy-section{margin-bottom:3.5rem}
+.policy-section h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--fog);display:flex;align-items:center;gap:1rem}
+.policy-section h2::before{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:.1em;counter-increment:policy;content:counter(policy,decimal-leading-zero)}
+.policy-body{counter-reset:policy}
+.policy-section p{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:1rem}
+.policy-section ul{list-style:none;margin:.5rem 0 1rem}
+.policy-section ul li{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.8;padding:.4rem 0 .4rem 1.5rem;position:relative;border-bottom:1px solid rgba(212,207,198,.4)}
+.policy-section ul li::before{content:'◆';position:absolute;left:0;font-size:.5rem;color:var(--gold);top:.65rem}
+.policy-divider{width:40px;height:1px;background:var(--gold);margin:4rem auto}
+.closing-note{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;font-weight:300;color:var(--lmid);text-align:center;line-height:1.8}
+
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.04);padding:60px 60px 40px}
+.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.04)}
+.fb p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.28);line-height:1.8;max-width:240px;margin-top:1rem}
+.fc h4{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.fc ul{list-style:none}.fc li{margin-bottom:.6rem}
+.fc li a{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.32);text-decoration:none;transition:color .3s}
+.fc li a:hover{color:rgba(255,255,255,.8)}
+.fbot{display:flex;justify-content:space-between;align-items:center}
+.fbot p,.fbot a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.18);text-decoration:none;transition:color .3s}
+.fbot a:hover{color:rgba(255,255,255,.5)}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){
+  header{padding:0 24px}nav{display:none}
+  .page-hero{padding:100px 24px 60px}
+  .content-wrap{padding:50px 24px 80px}
+  footer{padding:40px 24px 24px}.ft{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<header>
+  <a href="index.html" class="logo">N<em>O</em>S</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">会社概要</a>
+    <a href="service.html">事業紹介</a>
+    <a href="privacy.html" class="active">Privacy</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+</header>
+<main>
+<div class="page-hero">
+  <div class="ph-grid"></div>
+  <div class="ph-inner">
+    <div class="eyebrow">Legal</div>
+    <h1>プライバシー<br><em>ポリシー</em></h1>
+    <div class="bc"><a href="index.html">Home</a><span>/</span><span>プライバシーポリシー</span></div>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <div class="content-date">制定日：2010年4月1日　最終改定：2025年4月1日</div>
+
+  <div class="policy-body">
+    <div class="policy-section">
+      <h2>基本方針</h2>
+      <p>株式会社NOS（以下「当社」）は、お客様の個人情報の保護を重要な経営課題と認識し、個人情報の適切な取得・利用・管理を徹底することで、お客様からの信頼に応えてまいります。</p>
+      <p>当社は、個人情報の保護に関する法律（個人情報保護法）、その他の関連法令・ガイドラインを遵守し、個人情報を適切に取り扱います。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の定義</h2>
+      <p>本ポリシーにおける「個人情報」とは、個人情報の保護に関する法律に定める個人情報をいい、生存する個人に関する情報であって、氏名・生年月日・住所・電話番号・メールアドレス等により特定の個人を識別できる情報を指します。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の取得</h2>
+      <p>当社は、以下の方法により個人情報を取得します。</p>
+      <ul>
+        <li>お問い合わせフォーム・電話・メールでのご連絡の際</li>
+        <li>お見積もり・ご注文・ご契約の際</li>
+        <li>アフターサービス・保守対応の際</li>
+        <li>各種キャンペーン・セミナーへのお申し込みの際</li>
+        <li>名刺交換・展示会等のイベントでの接触の際</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の利用目的</h2>
+      <p>取得した個人情報は、以下の目的のために利用します。</p>
+      <ul>
+        <li>お問い合わせ・ご相談へのご返答および対応</li>
+        <li>製品・サービスの提供、お見積もり・契約手続き</li>
+        <li>保守・サポートサービスの提供</li>
+        <li>製品・サービスに関するご案内・情報提供（メールマガジン等）</li>
+        <li>当社サービスの品質向上のための統計・分析（個人を特定しない形式）</li>
+        <li>法令に基づく義務の履行</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の第三者提供</h2>
+      <p>当社は、以下の場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
+      <ul>
+        <li>法令に基づく場合</li>
+        <li>人の生命・身体・財産の保護のために必要がある場合であって、ご本人の同意を得ることが困難な場合</li>
+        <li>公衆衛生の向上または児童の健全な育成のために特に必要な場合</li>
+        <li>国の機関もしくは地方公共団体が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の委託</h2>
+      <p>当社は、利用目的の達成に必要な範囲において、個人情報の取り扱いを外部業者に委託する場合があります。この場合、委託先に対して適切な監督を行い、個人情報の安全管理を徹底します。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の安全管理</h2>
+      <p>当社は、個人情報の漏洩・滅失・毀損の防止のため、以下の安全管理措置を講じます。</p>
+      <ul>
+        <li>個人情報を取り扱う担当者を限定し、アクセス権限を管理する</li>
+        <li>個人情報を含む書類・データは施錠管理・暗号化を実施する</li>
+        <li>社内研修・教育により従業員の個人情報保護意識を高める</li>
+        <li>不正アクセス・情報漏洩を防ぐためのシステム的対策を定期的に見直す</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>個人情報の開示・訂正・削除</h2>
+      <p>ご本人から自己の個人情報についての開示・訂正・追加・削除・利用停止・第三者提供の停止をご要請いただいた場合には、ご本人確認のうえ、合理的な期間内に対応します。</p>
+      <p>ご請求は下記お問い合わせ窓口までご連絡ください。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Cookieの使用</h2>
+      <p>当社ウェブサイトでは、ユーザーエクスペリエンスの向上を目的としてCookieを使用する場合があります。Cookieはブラウザの設定により無効にすることができますが、一部機能が利用できなくなる場合があります。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>プライバシーポリシーの変更</h2>
+      <p>当社は、本ポリシーを予告なく変更することがあります。変更後のポリシーは、当ウェブサイトへの掲載をもって効力を生じるものとします。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>お問い合わせ窓口</h2>
+      <p>個人情報の取り扱いに関するお問い合わせは、以下の窓口までお願いいたします。</p>
+      <ul>
+        <li>株式会社NOS　個人情報保護担当</li>
+        <li>〒000-0000　東京都○○区○○1-2-3　○○ビル 5F</li>
+        <li>TEL：03-0000-0000（平日 9:00〜18:00）</li>
+        <li>E-mail：info@nos-corp.co.jp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="policy-divider"></div>
+  <p class="closing-note">株式会社NOS<br>代表取締役　山田 太郎</p>
+</div>
+</main>
+<footer>
+  <div class="ft">
+    <div class="fb"><a href="index.html" class="logo">N<em>O</em>S</a><p>株式会社NOS<br>OA機器の販売・設置・保守まで<br>トータルサポートする専門会社です。</p></div>
+    <div class="fc"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">会社概要</a></li><li><a href="service.html">事業紹介</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><ul><li><a href="tel:03-0000-0000">03-0000-0000</a></li><li><a href="mailto:info@nos-corp.co.jp">info@nos-corp.co.jp</a></li><li><a>平日 9:00 — 18:00</a></li></ul></div>
+    <div class="fc"><h4>Address</h4><ul><li><a>〒000-0000</a></li><li><a>東京都○○区○○1-2-3</a></li><li><a>○○ビル 5F</a></li></ul></div>
+  </div>
+  <div class="fbot"><p>© 2025 NOS Corporation. All Rights Reserved.</p><a href="privacy.html">Privacy Policy</a></div>
+</footer>
+<script>
+const c=document.getElementById('cursor'),r=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';setTimeout(()=>{r.style.left=e.clientX+'px';r.style.top=e.clientY+'px'},60)});
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{r.style.transform='translate(-50%,-50%) scale(1.8)';r.style.opacity='.7';r.style.borderColor='var(--gold)'});el.addEventListener('mouseleave',()=>{r.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.4';r.style.borderColor='var(--ink)'})});
+</script>
+</body>
+</html>

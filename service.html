@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事業紹介 — NOS | 株式会社NOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0f0f0f;--ink2:#1c1c1c;--mist:#f8f7f4;--mist2:#eeece8;--fog:#d4cfc6;--gold:#b8965a;--white:#fff;--mid:#7a7570;--lmid:#a8a49e}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--mist);color:var(--ink);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.4}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,247,244,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(15,15,15,.07)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.6rem;letter-spacing:.25em;color:var(--ink);text-decoration:none;text-transform:uppercase}
+.logo em{font-style:normal;color:var(--gold)}
+nav{display:flex;gap:2.5rem;align-items:center}
+nav a{font-size:.75rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s ease}
+nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after{width:100%}
+.nav-cta{border:1px solid var(--ink);padding:.5rem 1.4rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--ink);color:var(--mist)}.nav-cta::after{display:none!important}
+
+/* PAGE HERO */
+.page-hero{padding:140px 60px 100px;background:var(--ink);position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px}
+.ph-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(184,150,90,.1) 0%,transparent 55%)}
+.ph-l{position:relative;z-index:2;animation:fu .9s ease both}
+.ph-r{position:relative;z-index:2;animation:fu .9s .2s ease both}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.1;color:var(--white);margin-bottom:1.5rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:.88rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.45);max-width:460px}
+.bc{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;display:flex;gap:.8rem;color:rgba(255,255,255,.25);margin-bottom:2rem}
+.bc a{color:rgba(255,255,255,.25);text-decoration:none;transition:color .3s}.bc a:hover{color:rgba(255,255,255,.6)}
+.pull-q{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.32);line-height:1.7;padding-left:1.5rem;border-left:1px solid var(--gold)}
+
+/* SERVICE INTRO */
+.srv-intro{padding:100px 60px;background:var(--mist);display:grid;grid-template-columns:200px 1fr;gap:60px;max-width:1200px;margin:0 auto}
+.sec-lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lmid);padding-top:.4rem}
+.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;color:var(--ink);margin-bottom:1.5rem;line-height:1.2}
+.sh em{font-style:italic;color:var(--gold)}
+.body-p{font-size:.9rem;font-weight:300;line-height:1.9;color:var(--mid);margin-bottom:1rem;max-width:600px}
+
+/* SERVICE BLOCKS */
+.srv-block{padding:0 60px 100px;background:var(--mist)}
+.srv-block:nth-child(even){background:var(--mist2)}
+.srv-block-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;padding:80px 0;border-top:1px solid var(--fog)}
+.srv-block-inner.reverse{direction:rtl}
+.srv-block-inner.reverse > *{direction:ltr}
+.srv-num{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--gold);margin-bottom:1rem}
+.srv-icon-lg{font-size:2.5rem;margin-bottom:1.5rem;opacity:.6}
+.srv-block h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:1rem}
+.srv-block h2 em{font-style:italic;color:var(--gold)}
+.srv-block p{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:1.5rem}
+.srv-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--gold);border:1px solid rgba(184,150,90,.35);padding:.25rem .7rem}
+.srv-detail-list{display:flex;flex-direction:column}
+.sdl-item{padding:1rem 0;border-bottom:1px solid var(--fog);display:flex;gap:1rem;align-items:flex-start}
+.sdl-item:first-child{border-top:1px solid var(--fog)}
+.sdl-check{color:var(--gold);font-size:.8rem;padding-top:.1rem;flex-shrink:0}
+.sdl-text{font-size:.85rem;font-weight:300;color:var(--mid);line-height:1.6}
+
+/* FLOW */
+.flow-sec{padding:100px 60px;background:var(--ink)}
+.flow-inner{max-width:1100px;margin:0 auto}
+.flow-lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.flow-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:3rem}
+.flow-h em{font-style:italic;color:var(--gold)}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.flow-step{background:var(--ink);padding:2rem 1.5rem;text-align:center;position:relative}
+.flow-step::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:.9rem;color:var(--gold);z-index:2}
+.flow-step:last-child::after{display:none}
+.f-num{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--gold);margin-bottom:1rem}
+.f-icon{font-size:1.8rem;margin-bottom:1rem;opacity:.55}
+.flow-step h4{font-size:.85rem;font-weight:500;color:var(--white);margin-bottom:.5rem}
+.flow-step p{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.35);line-height:1.6}
+
+/* CTA */
+.cta{background:var(--ink2);padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:1.5rem}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-p{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.8}
+.cta-r{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+.btn-gold{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:1rem 2.5rem;text-decoration:none;border:1px solid var(--gold);transition:all .3s;font-weight:500}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.cta-info{display:flex;flex-direction:column;gap:.4rem}
+.cta-info a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:rgba(255,255,255,.28);text-decoration:none;transition:color .3s}
+.cta-info a:hover{color:rgba(255,255,255,.6)}
+
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.04);padding:60px 60px 40px}
+.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.04)}
+.fb p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.28);line-height:1.8;max-width:240px;margin-top:1rem}
+.fc h4{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.fc ul{list-style:none}.fc li{margin-bottom:.6rem}
+.fc li a{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.32);text-decoration:none;transition:color .3s}
+.fc li a:hover{color:rgba(255,255,255,.8)}
+.fbot{display:flex;justify-content:space-between;align-items:center}
+.fbot p,.fbot a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.18);text-decoration:none;transition:color .3s}
+.fbot a:hover{color:rgba(255,255,255,.5)}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){
+  header{padding:0 24px}nav{display:none}
+  .page-hero,.srv-intro,.srv-block-inner,.flow-steps,.cta{grid-template-columns:1fr;gap:40px}
+  .srv-block-inner.reverse{direction:ltr}
+  .page-hero,.srv-intro{padding:100px 24px 60px}
+  .srv-block,.flow-sec,.cta{padding:60px 24px}
+  .flow-step::after{display:none}
+  footer{padding:40px 24px 24px}.ft{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<header>
+  <a href="index.html" class="logo">N<em>O</em>S</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">会社概要</a>
+    <a href="service.html" class="active">事業紹介</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+</header>
+<main>
+<div class="page-hero">
+  <div class="ph-grid"></div><div class="ph-glow"></div>
+  <div class="ph-l">
+    <div class="eyebrow">Services</div>
+    <h1>事業<em>紹介</em></h1>
+    <p class="hero-desc">OA機器の販売から、ネットワーク構築・保守・IT導入支援まで。オフィス環境に必要なすべてを、NOSが一貫してサポートします。</p>
+  </div>
+  <div class="ph-r">
+    <div class="bc"><a href="index.html">Home</a><span>/</span><span>事業紹介</span></div>
+    <div class="pull-q">「何が必要か」を一緒に考え、<br>「最適な形」で届ける。<br>それが私たちの仕事です。</div>
+  </div>
+</div>
+
+<div class="srv-intro">
+  <div class="sec-lbl">Our Services</div>
+  <div>
+    <h2 class="sh">6つの<em>事業領域</em></h2>
+    <p class="body-p">NOSは単なる機器販売業者ではありません。お客様のオフィス環境を総合的に診断し、最適なソリューションをご提案・導入・保守まで一社でサポートします。</p>
+    <p class="body-p">初めてのご相談から、既存環境の見直し、緊急のトラブル対応まで、あらゆるフェーズでお役に立てます。</p>
+  </div>
+</div>
+
+<!-- 01 複合機 -->
+<div class="srv-block">
+  <div class="srv-block-inner">
+    <div>
+      <div class="srv-num">Service 01</div>
+      <div class="srv-icon-lg">🖨</div>
+      <h2>複合機・<br><em>プリンター</em></h2>
+      <p>コピー・プリント・スキャン・FAXを1台に集約。業務量・部署規模・用途に合わせた最適機種を豊富なラインナップからご提案します。</p>
+      <p>リース・購入・レンタルなど、コスト面を踏まえた最善のプランをご案内します。</p>
+      <div class="srv-tags">
+        <span class="tag">モノクロ機</span><span class="tag">カラー機</span><span class="tag">A3対応</span><span class="tag">FAX内蔵</span><span class="tag">クラウド連携</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">業種・業務量に応じた機種選定の無料コンサルティング</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">設置・ネットワーク設定・操作説明まで一括対応</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">消耗品（トナー・ドラム）の定期補充サービス</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">故障時の迅速なオンサイト修理対応</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">リース満了時の機種更新・乗り換えサポート</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 PC -->
+<div class="srv-block">
+  <div class="srv-block-inner reverse">
+    <div>
+      <div class="srv-num">Service 02</div>
+      <div class="srv-icon-lg">💻</div>
+      <h2>PC・<br><em>タブレット</em></h2>
+      <p>法人向けビジネスPCの選定から、OSセットアップ・アプリケーション導入（キッティング）、既存システムへのドメイン参加まで、まとめてお任せください。</p>
+      <div class="srv-tags">
+        <span class="tag">Windows PC</span><span class="tag">Mac</span><span class="tag">タブレット</span><span class="tag">一括キッティング</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">用途・予算に合わせた法人モデルの一括調達</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">OS初期設定・業務アプリのインストール（キッティング）</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">Active Directory / Azure ADへの参加設定</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">データ移行・旧端末の廃棄処理（証明書発行）</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 ネットワーク -->
+<div class="srv-block" style="background:var(--mist2)">
+  <div class="srv-block-inner">
+    <div>
+      <div class="srv-num">Service 03</div>
+      <div class="srv-icon-lg">🌐</div>
+      <h2>ネットワーク<br><em>構築</em></h2>
+      <p>オフィスの有線LAN・無線Wi-Fi設計から、UTM（統合脅威管理）の導入まで。業務に求められる安定性とセキュリティを両立したネットワーク環境を構築します。</p>
+      <div class="srv-tags">
+        <span class="tag">有線LAN</span><span class="tag">Wi-Fi</span><span class="tag">UTM</span><span class="tag">VPN</span><span class="tag">拠点間接続</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">現地調査・フロア設計・配線工事の一括対応</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">UTM導入による不正アクセス・マルウェア防御</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">複数拠点間のVPN・専用線接続設計</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">導入後の死活監視・障害対応サポート</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 セキュリティ -->
+<div class="srv-block" style="background:var(--mist2)">
+  <div class="srv-block-inner reverse">
+    <div>
+      <div class="srv-num">Service 04</div>
+      <div class="srv-icon-lg">🔒</div>
+      <h2>セキュリティ<br><em>機器</em></h2>
+      <p>不正侵入・情報漏洩・内部犯罪リスクに対応するオフィスセキュリティ機器の導入をサポート。監視カメラ・入退室管理システムの設計・設置まで行います。</p>
+      <div class="srv-tags">
+        <span class="tag">監視カメラ</span><span class="tag">入退室管理</span><span class="tag">NAS暗号化</span><span class="tag">シュレッダー</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">オフィスレイアウトに合わせたカメラ配置設計</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">ICカード・生体認証による入退室管理の導入</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">録画データの保管・クラウドバックアップ設定</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">セキュリティポリシーの策定支援</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 保守 -->
+<div class="srv-block">
+  <div class="srv-block-inner">
+    <div>
+      <div class="srv-num">Service 05</div>
+      <div class="srv-icon-lg">🛠</div>
+      <h2>保守・<br><em>メンテナンス</em></h2>
+      <p>導入したすべての機器について、定期点検から緊急トラブル対応まで専任エンジニアが対応。「壊れてから呼ぶ」ではなく「壊れる前に防ぐ」体制を提供します。</p>
+      <div class="srv-tags">
+        <span class="tag">定期点検</span><span class="tag">オンサイト対応</span><span class="tag">保守契約</span><span class="tag">リモートサポート</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">月次・四半期・年次の定期点検プランをご用意</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">故障時は原則即日〜翌営業日にオンサイト対応</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">リモートサポートによる迅速なソフト面のトラブル解決</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">保守契約による月額固定費での安心サポート体制</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 コスト最適化 -->
+<div class="srv-block">
+  <div class="srv-block-inner reverse">
+    <div>
+      <div class="srv-num">Service 06</div>
+      <div class="srv-icon-lg">📊</div>
+      <h2>コスト<br><em>最適化提案</em></h2>
+      <p>現在ご利用中の機器・契約内容を診断し、過剰なコストや不要な重複契約を洗い出します。リース・購入・サブスクリプションの比較により、最もコストパフォーマンスの高い体制をご提案します。</p>
+      <div class="srv-tags">
+        <span class="tag">無料診断</span><span class="tag">リース比較</span><span class="tag">TCO分析</span><span class="tag">統廃合提案</span>
+      </div>
+    </div>
+    <div class="srv-detail-list">
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">現状機器・契約の棚卸し診断（無料）</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">リース・購入・レンタルのTCO（総保有コスト）比較</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">複数台の複合機を1台に統合するコンソリデーション提案</span></div>
+      <div class="sdl-item"><span class="sdl-check">◆</span><span class="sdl-text">印刷コスト削減のためのプリントルール設計支援</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOW -->
+<section class="flow-sec">
+  <div class="flow-inner">
+    <div class="flow-lbl">How It Works</div>
+    <h2 class="flow-h">ご導入までの<em>流れ</em></h2>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="f-num">STEP 01</div><div class="f-icon">📞</div><h4>お問い合わせ</h4><p>電話・メール・フォームにてお気軽にご連絡ください</p></div>
+      <div class="flow-step"><div class="f-num">STEP 02</div><div class="f-icon">🔍</div><h4>現状ヒアリング</h4><p>課題・予算・環境を丁寧にお伺いします</p></div>
+      <div class="flow-step"><div class="f-num">STEP 03</div><div class="f-icon">📋</div><h4>ご提案・見積</h4><p>最適なプランと明確な見積書をご提出</p></div>
+      <div class="flow-step"><div class="f-num">STEP 04</div><div class="f-icon">🚚</div><h4>納品・設置</h4><p>設定・操作説明まで担当者が対応します</p></div>
+      <div class="flow-step"><div class="f-num">STEP 05</div><div class="f-icon">🛡</div><h4>アフターサポート</h4><p>導入後も継続的にサポートいたします</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div><h2 class="cta-h">まずは、<br><em>ご相談から。</em></h2><p class="cta-p">現状の機器構成の見直しから新規導入まで、<br>専門スタッフが丁寧にご対応します。<br>初回のご相談は無料です。</p></div>
+  <div class="cta-r">
+    <a href="contact.html" class="btn-gold">お問い合わせ・無料相談</a>
+    <div class="cta-info"><a href="tel:03-0000-0000">TEL : 03-0000-0000</a><a href="mailto:info@nos-corp.co.jp">info@nos-corp.co.jp</a><a>平日 9:00 — 18:00</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="ft">
+    <div class="fb"><a href="index.html" class="logo">N<em>O</em>S</a><p>株式会社NOS<br>OA機器の販売・設置・保守まで<br>トータルサポートする専門会社です。</p></div>
+    <div class="fc"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">会社概要</a></li><li><a href="service.html">事業紹介</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><ul><li><a href="tel:03-0000-0000">03-0000-0000</a></li><li><a href="mailto:info@nos-corp.co.jp">info@nos-corp.co.jp</a></li><li><a>平日 9:00 — 18:00</a></li></ul></div>
+    <div class="fc"><h4>Address</h4><ul><li><a>〒000-0000</a></li><li><a>東京都○○区○○1-2-3</a></li><li><a>○○ビル 5F</a></li></ul></div>
+  </div>
+  <div class="fbot"><p>© 2025 NOS Corporation. All Rights Reserved.</p><a href="privacy.html">Privacy Policy</a></div>
+</footer>
+<script>
+const c=document.getElementById('cursor'),r=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';setTimeout(()=>{r.style.left=e.clientX+'px';r.style.top=e.clientY+'px'},60)});
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{r.style.transform='translate(-50%,-50%) scale(1.8)';r.style.opacity='.7';r.style.borderColor='var(--gold)'});el.addEventListener('mouseleave',()=>{r.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.4';r.style.borderColor='var(--ink)'})});
+</script>
+</body>
+</html>
